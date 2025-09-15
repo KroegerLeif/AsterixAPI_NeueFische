@@ -20,6 +20,26 @@ public class AsterixController {
         return characterRepository.findAll();
     }
 
+    @GetMapping("/characters/{id}")
+    public List<Character> getCharacterById(@PathVariable String id) {
+        return characterRepository.findCharacterById(id);
+    }
+
+    @GetMapping("/characters/{name}")
+    public List<Character> getCharacterByName(@PathVariable String name) {
+        return characterRepository.findByName(name);
+    }
+
+    @GetMapping("/characters/{profession}")
+    public List<Character> getCharacterByProfession(@PathVariable String profession) {
+        return characterRepository.findByProfession(profession);
+    }
+
+    @GetMapping("/characters/{age}")
+    public List<Character> getCharacterByAge(@PathVariable int age) {
+        return characterRepository.findByAge(age);
+    }
+
     @PostMapping("newCharacter")
     public Character newCharacter(@RequestBody Character character) {
         return characterRepository.save(character);

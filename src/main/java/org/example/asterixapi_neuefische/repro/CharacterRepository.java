@@ -4,7 +4,12 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 import org.example.asterixapi_neuefische.Character;
 
+import java.util.List;
+
 @Repository
 public interface CharacterRepository extends MongoRepository<Character, String> {
-    Character findByName(String name);
+    List<Character> findByName(String name);
+    List<Character> findByProfession(String profession);
+    List<Character> findByAge(int age);
+    List<Character> findCharacterById(String id);
 }
