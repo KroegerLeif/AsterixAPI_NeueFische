@@ -20,9 +20,9 @@ public class AsterixController {
         return characterRepository.findAll();
     }
 
-    @GetMapping("/characters/avgAge")
-    public int getAverageAge() {
-        List<Character> characters = characterRepository.findAll();
+    @GetMapping("/characters/avgAge{profession}")
+    public int getAverageAge(@PathVariable String profession) {
+        List<Character> characters = characterRepository.findByProfession(profession);
         int sum = 0;
         for (Character character : characters) {
             sum += character.age();
