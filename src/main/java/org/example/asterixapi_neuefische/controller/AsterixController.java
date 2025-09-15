@@ -1,5 +1,6 @@
 package org.example.asterixapi_neuefische.controller;
 
+import org.example.asterixapi_neuefische.repro.CharacterRepository;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.example.asterixapi_neuefische.Character;
@@ -9,6 +10,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/asterix")
 public class AsterixController {
+    private final CharacterRepository characterRepository;
+
+    public AsterixController(CharacterRepository characterRepository) {
+        this.characterRepository = characterRepository;
+    }
 
     @RequestMapping("/characters")
     public List<Character> getCharacters() {
