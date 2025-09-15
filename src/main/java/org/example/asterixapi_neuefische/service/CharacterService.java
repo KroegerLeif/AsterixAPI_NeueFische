@@ -1,6 +1,7 @@
 package org.example.asterixapi_neuefische.service;
 
 import org.example.asterixapi_neuefische.dto.RegisterCharacterDTO;
+import org.example.asterixapi_neuefische.dto.UpdateCharacterDTO;
 import org.example.asterixapi_neuefische.model.Character;
 import org.example.asterixapi_neuefische.repro.CharacterRepository;
 import org.springframework.stereotype.Service;
@@ -61,7 +62,7 @@ public class CharacterService {
         characterRepository.deleteById(id);
     }
 
-    public Character updateCharacter(String id, Character character) {
+    public Character updateCharacter(String id, UpdateCharacterDTO character) {
         Character oldCharacter = characterRepository.findById(id).orElse(null);
         if(oldCharacter != null){
             return characterRepository.save(oldCharacter
@@ -69,6 +70,6 @@ public class CharacterService {
                     .withName(character.name())
                     .withProfession(character.profession()));
         }
-        return character;
+        return oldCharacter;
     }
 }

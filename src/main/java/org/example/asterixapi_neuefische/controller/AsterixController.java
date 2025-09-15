@@ -1,6 +1,7 @@
 package org.example.asterixapi_neuefische.controller;
 
 import org.example.asterixapi_neuefische.dto.RegisterCharacterDTO;
+import org.example.asterixapi_neuefische.dto.UpdateCharacterDTO;
 import org.example.asterixapi_neuefische.service.CharacterService;
 import org.springframework.web.bind.annotation.*;
 import org.example.asterixapi_neuefische.model.Character;
@@ -63,8 +64,8 @@ public class AsterixController {
 
     //Put Mapping
     @PutMapping("/characters/{id}")
-    public Character updateCharacter(@PathVariable String id, @RequestBody Character character) {
-        return characterService.updateCharacter(id, character);
+    public Character updateCharacter(@PathVariable String id, @RequestBody UpdateCharacterDTO upDatedCharacter) {
+        return characterService.updateCharacter(id, upDatedCharacter);
     }
 
 }
