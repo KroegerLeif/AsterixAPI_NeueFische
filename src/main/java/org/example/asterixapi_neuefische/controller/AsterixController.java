@@ -20,6 +20,16 @@ public class AsterixController {
         return characterRepository.findAll();
     }
 
+    @GetMapping("/characters/avgAge")
+    public int getAverageAge() {
+        List<Character> characters = characterRepository.findAll();
+        int sum = 0;
+        for (Character character : characters) {
+            sum += character.age();
+        }
+        return sum / characters.size();
+    }
+
     @GetMapping("/characters/{id}")
     public List<Character> getCharacterById(@PathVariable String id) {
         return characterRepository.findCharacterById(id);
