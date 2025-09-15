@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class AsterixApiNeueFischeApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(AsterixApiNeueFischeApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(AsterixApiNeueFischeApplication.class, args);
+    }
 
 }
