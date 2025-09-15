@@ -1,4 +1,4 @@
-package org.example.asterixapi_neuefische;
+package org.example.asterixapi_neuefische.model;
 
 import lombok.With;
 
