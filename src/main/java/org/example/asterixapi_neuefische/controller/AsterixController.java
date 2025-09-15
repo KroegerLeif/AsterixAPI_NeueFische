@@ -1,5 +1,6 @@
 package org.example.asterixapi_neuefische.controller;
 
+import org.example.asterixapi_neuefische.dto.RegisterCharacterDTO;
 import org.example.asterixapi_neuefische.service.CharacterService;
 import org.springframework.web.bind.annotation.*;
 import org.example.asterixapi_neuefische.model.Character;
@@ -11,11 +12,13 @@ import java.util.List;
 public class AsterixController {
     private final CharacterService characterService;
 
+    //Constructor
     public AsterixController(CharacterService characterService) {
         this.characterService = characterService;
     }
 
 
+    //Get Mapping
     @GetMapping("/characters/all")
     public List<Character> getAllCharacters() {
         return characterService.getAllCharacters();
@@ -46,16 +49,19 @@ public class AsterixController {
         return characterService.getCharacterByAge(age);
     }
 
+    //Post Mapping
     @PostMapping("newCharacter")
-    public Character newCharacter(@RequestBody Character character) {
-        return characterService.newCharacter(character);
+    public Character newCharacter(@RequestBody RegisterCharacterDTO newCharacter) {
+        return characterService.newCharacter(newCharacter);
     }
 
+    //Delete Mapping
     @DeleteMapping("/characters/{id}")
     public void deleteCharacter(@PathVariable String id) {
         characterService.deleteCharacter(id);
     }
 
+    //Put Mapping
     @PutMapping("/characters/{id}")
     public Character updateCharacter(@PathVariable String id, @RequestBody Character character) {
         return characterService.updateCharacter(id, character);

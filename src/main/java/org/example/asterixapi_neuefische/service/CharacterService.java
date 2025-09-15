@@ -1,5 +1,6 @@
 package org.example.asterixapi_neuefische.service;
 
+import org.example.asterixapi_neuefische.dto.RegisterCharacterDTO;
 import org.example.asterixapi_neuefische.model.Character;
 import org.example.asterixapi_neuefische.repro.CharacterRepository;
 import org.springframework.stereotype.Service;
@@ -11,9 +12,11 @@ import java.util.List;
 public class CharacterService {
 
     private final CharacterRepository characterRepository;
+    private final IdService idService;
 
     public CharacterService(CharacterRepository characterRepository) {
         this.characterRepository = characterRepository;
+        this.idService = new IdService();
     }
 
     public List<Character> getAllCharacters() {
@@ -45,7 +48,12 @@ public class CharacterService {
         return characterRepository.findByAge(age);
     }
 
-    public Character newCharacter(Character character) {
+    public Character newCharacter(RegisterCharacterDTO newCharacterDTO) {
+        Character character = new Character(
+                idService.generateId(),
+                newCharacterDTO.name(),
+                newCharacterDTO.age(),
+                newCharacterDTO.profession());
         return characterRepository.save(character);
     }
 
